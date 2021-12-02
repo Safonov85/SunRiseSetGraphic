@@ -13,5 +13,11 @@
     X2="50" Y2="50"
     Stroke="Black"
     StrokeThickness="4" />
+        <Line
+    X1="300" Y1="110"
+    X2="300" Y2="200"
+    Stroke="Blue"
+    StrokeThickness="4" />
+        
     </Grid>
 </Window>
