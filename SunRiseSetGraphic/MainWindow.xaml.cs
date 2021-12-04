@@ -46,7 +46,10 @@ namespace SunRiseSetGraphic
             // MainGraphImage.Source = (BitmapImage) redLine;
         }
 
-        
+        private void MainWindow1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //CircleObj.Stroke.Transform.Value.OffsetX = 83;
+        }
     }
 
     

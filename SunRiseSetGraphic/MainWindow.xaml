@@ -1,11 +1,11 @@
-﻿<Window x:Class="SunRiseSetGraphic.MainWindow"
+﻿<Window x:Name="MainWindow1" x:Class="SunRiseSetGraphic.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SunRiseSetGraphic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FF937676" MouseDown="MainWindow1_MouseDown">
     <Grid>
         <Image x:Name="MainGraphImage" HorizontalAlignment="Left" Height="340" Margin="82,49,0,0" VerticalAlignment="Top" Width="630"/>
         <Line
@@ -18,6 +18,12 @@
     X2="300" Y2="200"
     Stroke="Blue"
     StrokeThickness="4" />
-        
+        <Ellipse x:Name="CircleObj"
+            
+Fill="Green"
+Height="200"
+Width="200"
+StrokeThickness="2"
+Stroke="White" Margin="331,117,269,117"/>
     </Grid>
 </Window>
