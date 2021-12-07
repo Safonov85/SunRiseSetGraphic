@@ -20,9 +20,25 @@ namespace SunRiseSetGraphic
     /// </summary>
     public partial class MainWindow : Window
     {
+        BitmapImage bitmap;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            bitmap = new BitmapImage();
+            //bitmap.UriSource = new Uri(dialog.FileName);
+            var i = BitmapSource.Create(
+    2,
+    2,
+    96,
+    96,
+    PixelFormats.Indexed1,
+    new BitmapPalette(new List<Color> { Colors.Red }),
+    new byte[] { 0, 0, 0, 0 },
+    1);
+            
+            MainGraphImage.Source = i;
         }
 
         public void CreateALine()
@@ -48,7 +64,24 @@ namespace SunRiseSetGraphic
 
         private void MainWindow1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //CircleObj.Stroke.Transform.Value.OffsetX = 83;
+            DrawOnCertainPixel();
+        }
+
+        void DrawOnCertainPixel()
+        {
+
+            DrawingVisual drawVis = new DrawingVisual();
+            using (DrawingContext dc = drawVis.RenderOpen())
+            {
+                dc.DrawImage(MainGraphImage.Source, new Rect(0, 0, MainGraphImage.Width, MainGraphImage.Height));
+                dc.DrawLine(new Pen(Brushes.Blue, 2), new Point(0, 0), new Point(MainGraphImage.Width, MainGraphImage.Height));
+                dc.DrawRectangle(Brushes.Green, null, new Rect(20, 20, 150, 100));
+            }
+
+            RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
+            targetBitmap.Render(drawVis);
+
+            MainGraphImage.Source = targetBitmap;
         }
     }
 
