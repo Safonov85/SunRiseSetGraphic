@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SunRiseSetGraphic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#FF937676" MouseDown="MainWindow1_MouseDown">
+        Title="MainWindow" Height="450" Width="800" Background="#FF937676" MouseDown="MainWindow1_MouseDown" MouseMove="MainWindow1_MouseMove">
     <Grid>
         <Image x:Name="MainGraphImage" HorizontalAlignment="Left" Height="340" Margin="82,49,0,0" VerticalAlignment="Top" Width="630"/>
     </Grid>

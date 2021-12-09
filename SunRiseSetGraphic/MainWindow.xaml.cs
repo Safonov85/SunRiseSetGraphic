@@ -39,32 +39,13 @@ namespace SunRiseSetGraphic
     1);
             
             MainGraphImage.Source = i;
-        }
 
-        public void CreateALine()
-        {
-            // Create a Line  
-            Line redLine = new Line();
-            redLine.X1 = 50;
-            redLine.Y1 = 50;
-            redLine.X2 = 200;
-            redLine.Y2 = 200;
-
-            // Create a red Brush  
-            SolidColorBrush redBrush = new SolidColorBrush();
-            redBrush.Color = Colors.Red;
-
-            // Set Line's width and color  
-            redLine.StrokeThickness = 4;
-            redLine.Stroke = redBrush;
-
-            // Add line to the Grid.  
-            // MainGraphImage.Source = (BitmapImage) redLine;
+            DrawOnCertainPixel();
         }
 
         private void MainWindow1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DrawOnCertainPixel();
+            //DrawOnCertainPixel();
         }
 
         void DrawOnCertainPixel()
@@ -76,6 +57,31 @@ namespace SunRiseSetGraphic
                 dc.DrawImage(MainGraphImage.Source, new Rect(0, 0, MainGraphImage.Width, MainGraphImage.Height));
                 dc.DrawLine(new Pen(Brushes.Blue, 2), new Point(0, 0), new Point(MainGraphImage.Width, MainGraphImage.Height));
                 dc.DrawRectangle(Brushes.Green, null, new Rect(20, 20, 150, 100));
+            }
+
+            RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
+            targetBitmap.Render(drawVis);
+
+            MainGraphImage.Source = targetBitmap;
+        }
+
+        private void MainWindow1_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.MainWindow1.Title = "Baah";
+
+            MainGraphImage.Source = null;
+
+            var point = e.GetPosition(this.MainGraphImage);
+
+            DrawingVisual drawVis = new DrawingVisual();
+            using (DrawingContext dc = drawVis.RenderOpen())
+            {
+                dc.DrawImage(MainGraphImage.Source, new Rect(0, 0, MainGraphImage.Width, MainGraphImage.Height));
+                dc.DrawLine(new Pen(Brushes.Blue, 2), new Point(0, 0), new Point(MainGraphImage.Width, MainGraphImage.Height));
+                if(point.X > 0 && point.Y > 0)
+                {
+                    dc.DrawRectangle(Brushes.Green, null, new Rect(0, 0, point.X, point.Y));
+                }
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
