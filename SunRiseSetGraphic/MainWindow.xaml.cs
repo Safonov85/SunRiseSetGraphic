@@ -69,10 +69,12 @@ namespace SunRiseSetGraphic
         {
             this.MainWindow1.Title = "Baah";
 
+            // to clear the image
             MainGraphImage.Source = null;
 
             var point = e.GetPosition(this.MainGraphImage);
 
+            // draw the new frame
             DrawingVisual drawVis = new DrawingVisual();
             using (DrawingContext dc = drawVis.RenderOpen())
             {
