@@ -73,6 +73,9 @@ namespace SunRiseSetGraphic
             MainGraphImage.Source = null;
 
             var point = e.GetPosition(this.MainGraphImage);
+            Point pointCircle;
+            pointCircle.X = MainGraphImage.Width / 2;
+            pointCircle.Y = MainGraphImage.Height / 2;
 
             // draw the new frame
             DrawingVisual drawVis = new DrawingVisual();
@@ -84,6 +87,7 @@ namespace SunRiseSetGraphic
                 {
                     dc.DrawRectangle(Brushes.Green, null, new Rect(0, 0, point.X, point.Y));
                 }
+                dc.DrawEllipse(Brushes.Pink, null, pointCircle, point.X, point.X);
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
