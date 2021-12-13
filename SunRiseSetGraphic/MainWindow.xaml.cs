@@ -87,7 +87,8 @@ namespace SunRiseSetGraphic
                 {
                     dc.DrawRectangle(Brushes.Green, null, new Rect(0, 0, point.X, point.Y));
                 }
-                dc.DrawEllipse(Brushes.Pink, null, pointCircle, point.X, point.X);
+                // Transparent Circle
+                dc.DrawEllipse(new SolidColorBrush(Color.FromArgb(127, 50,50,50)), null, pointCircle, point.X, point.X);
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
