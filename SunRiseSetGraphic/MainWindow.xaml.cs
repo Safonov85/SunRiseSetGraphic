@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,8 @@ namespace SunRiseSetGraphic
             InitializeComponent();
 
             bitmap = new BitmapImage();
-            //bitmap.UriSource = new Uri(dialog.FileName);
+            
+            // some thing to get it started
             var i = BitmapSource.Create(
     2,
     2,
@@ -67,7 +69,7 @@ namespace SunRiseSetGraphic
 
         private void MainWindow1_MouseMove(object sender, MouseEventArgs e)
         {
-            this.MainWindow1.Title = "Baah";
+            this.MainWindow1.Title = "Graphics";
 
             // to clear the image
             MainGraphImage.Source = null;
@@ -85,10 +87,22 @@ namespace SunRiseSetGraphic
                 dc.DrawLine(new Pen(Brushes.Blue, 2), new Point(0, 0), new Point(MainGraphImage.Width, MainGraphImage.Height));
                 if(point.X > 0 && point.Y > 0)
                 {
-                    dc.DrawRectangle(Brushes.Green, null, new Rect(0, 0, point.X, point.Y));
+                    dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(127, 50, 200, 50)), null, new Rect(0, 0, point.X, point.Y));
                 }
                 // Transparent Circle
                 dc.DrawEllipse(new SolidColorBrush(Color.FromArgb(127, 50,50,50)), null, pointCircle, point.X, point.X);
+
+
+                // this one is obsolete, but used for the moment
+                FormattedText formattedText = new FormattedText(
+        "Safonov",
+        CultureInfo.GetCultureInfo("en-us"),
+        FlowDirection.LeftToRight,
+        new Typeface("Arial"),
+        32,
+        Brushes.White);
+
+                dc.DrawText(formattedText, new Point(MainGraphImage.Width - 150, 10));
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
