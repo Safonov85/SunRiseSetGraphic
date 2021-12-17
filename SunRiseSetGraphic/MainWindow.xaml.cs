@@ -92,17 +92,17 @@ namespace SunRiseSetGraphic
                 // Transparent Circle
                 dc.DrawEllipse(new SolidColorBrush(Color.FromArgb(127, 50,50,50)), null, pointCircle, point.X, point.X);
 
-
-                // this one is obsolete, but used for the moment
                 FormattedText formattedText = new FormattedText(
         "Safonov",
         CultureInfo.GetCultureInfo("en-us"),
         FlowDirection.LeftToRight,
         new Typeface("Arial"),
         32,
-        Brushes.White);
+        Brushes.White, VisualTreeHelper.GetDpi(this).PixelsPerDip);
 
                 dc.DrawText(formattedText, new Point(MainGraphImage.Width - 150, 10));
+
+                
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
