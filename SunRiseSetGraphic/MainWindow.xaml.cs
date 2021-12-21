@@ -79,6 +79,9 @@ namespace SunRiseSetGraphic
             pointCircle.X = MainGraphImage.Width / 2;
             pointCircle.Y = MainGraphImage.Height / 2;
 
+            float colorChange = (float)point.X / (float)MainGraphImage.Width;
+            colorChange = colorChange * 200f;
+
             // draw the new frame
             DrawingVisual drawVis = new DrawingVisual();
             using (DrawingContext dc = drawVis.RenderOpen())
@@ -87,7 +90,7 @@ namespace SunRiseSetGraphic
                 dc.DrawLine(new Pen(Brushes.Blue, 2), new Point(0, 0), new Point(MainGraphImage.Width, MainGraphImage.Height));
                 if(point.X > 0 && point.Y > 0)
                 {
-                    dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(127, 50, 200, 50)), null, new Rect(0, 0, point.X, point.Y));
+                    dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(127, 50, (byte)colorChange, 50)), null, new Rect(0, 0, point.X, point.Y));
                 }
                 // Transparent Circle
                 dc.DrawEllipse(new SolidColorBrush(Color.FromArgb(127, 50,50,50)), null, pointCircle, point.X, point.X);
