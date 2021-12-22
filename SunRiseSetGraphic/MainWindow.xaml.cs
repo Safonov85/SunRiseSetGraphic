@@ -82,6 +82,8 @@ namespace SunRiseSetGraphic
             float colorChange = (float)point.X / (float)MainGraphImage.Width;
             colorChange = colorChange * 200f;
 
+            float transparentChange = 1f - colorChange;
+
             // draw the new frame
             DrawingVisual drawVis = new DrawingVisual();
             using (DrawingContext dc = drawVis.RenderOpen())
@@ -93,7 +95,7 @@ namespace SunRiseSetGraphic
                     dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(127, 50, (byte)colorChange, 50)), null, new Rect(0, 0, point.X, point.Y));
                 }
                 // Transparent Circle
-                dc.DrawEllipse(new SolidColorBrush(Color.FromArgb(127, 50,50,50)), null, pointCircle, point.X, point.X);
+                dc.DrawEllipse(new SolidColorBrush(Color.FromArgb((byte)transparentChange, 50,50,50)), null, pointCircle, point.X * 0.5, point.X * 0.5);
 
                 FormattedText formattedText = new FormattedText(
         "Safonov",
