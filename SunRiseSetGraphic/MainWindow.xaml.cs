@@ -23,11 +23,14 @@ namespace SunRiseSetGraphic
     {
         BitmapImage bitmap;
 
+        Point pointCircle;
+
         public MainWindow()
         {
             InitializeComponent();
 
             bitmap = new BitmapImage();
+            pointCircle = ranPlace();
             
             // some thing to get it started
             var i = BitmapSource.Create(
@@ -67,6 +70,18 @@ namespace SunRiseSetGraphic
             MainGraphImage.Source = targetBitmap;
         }
 
+        Point ranPlace()
+        {
+            Random rand = new Random();
+            int x, y;
+            x = rand.Next(1, (int)MainGraphImage.Width);
+            y = rand.Next(1, (int)MainGraphImage.Height);
+
+            Point point = new Point((double)x, (double)y);
+
+            return point;
+        }
+
         private void MainWindow1_MouseMove(object sender, MouseEventArgs e)
         {
             this.MainWindow1.Title = "Graphics";
@@ -75,9 +90,9 @@ namespace SunRiseSetGraphic
             MainGraphImage.Source = null;
 
             var point = e.GetPosition(this.MainGraphImage);
-            Point pointCircle;
-            pointCircle.X = MainGraphImage.Width / 2;
-            pointCircle.Y = MainGraphImage.Height / 2;
+            
+            //pointCircle.X = MainGraphImage.Width / 2;
+            //pointCircle.Y = MainGraphImage.Height / 2;
 
             float colorChange = (float)point.X / (float)MainGraphImage.Width;
             colorChange = colorChange * 200f;
