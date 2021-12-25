@@ -112,7 +112,12 @@ namespace SunRiseSetGraphic
                 // Transparent Circle
                 dc.DrawEllipse(new SolidColorBrush(Color.FromArgb((byte)transparentChange, 50,50,50)), null, pointCircle, point.X * 0.5, point.X * 0.5);
 
+                //
                 dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(0, 0, 20, 20));
+
+                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(30, 0, 20, 20));
+
+                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(60, 0, 20, 20));
 
                 FormattedText formattedText = new FormattedText(
         "Safonov",
