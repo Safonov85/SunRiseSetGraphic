@@ -34,14 +34,14 @@ namespace SunRiseSetGraphic
             
             // some thing to get it started
             var i = BitmapSource.Create(
-    2,
-    2,
-    96,
-    96,
-    PixelFormats.Indexed1,
-    new BitmapPalette(new List<Color> { Colors.Red }),
-    new byte[] { 0, 0, 0, 0 },
-    1);
+                                        2,
+                                        2,
+                                        96,
+                                        96,
+                                        PixelFormats.Indexed1,
+                                        new BitmapPalette(new List<Color> { Colors.Red }),
+                                        new byte[] { 0, 0, 0, 0 },
+                                        1);
             
             MainGraphImage.Source = i;
 
@@ -113,11 +113,11 @@ namespace SunRiseSetGraphic
                 dc.DrawEllipse(new SolidColorBrush(Color.FromArgb((byte)transparentChange, 50,50,50)), null, pointCircle, point.X * 0.5, point.X * 0.5);
 
                 //
-                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(0, 0, 20, 20));
+                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(0, 0, 20, 200));
 
-                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(30, 0, 20, 20));
+                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(30, 0, 20, 200));
 
-                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(60, 0, 20, 20));
+                dc.DrawRectangle(new SolidColorBrush(Color.FromArgb(255, 220, 220, 40)), null, new Rect(60, 0, 20, 200));
 
                 FormattedText formattedText = new FormattedText(
         "Safonov",
