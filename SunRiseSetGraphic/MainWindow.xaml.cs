@@ -129,7 +129,17 @@ namespace SunRiseSetGraphic
 
                 dc.DrawText(formattedText, new Point(MainGraphImage.Width - 150, 10));
 
-                
+                FormattedText cursorText = new FormattedText(
+        (int)point.X + " " + (int)point.Y,
+        CultureInfo.GetCultureInfo("en-us"),
+        FlowDirection.LeftToRight,
+        new Typeface("Arial"),
+        32,
+        Brushes.White, VisualTreeHelper.GetDpi(this).PixelsPerDip);
+
+                dc.DrawText(cursorText, new Point(point.X, point.Y));
+
+
             }
 
             RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)MainGraphImage.Width, (int)MainGraphImage.Height, 96, 96, PixelFormats.Pbgra32);
